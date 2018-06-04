@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:PapyrusJava="http://www.eclipse.org/papyrus/PapyrusJava/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <uml:Model xmi:id="_C7X58K1KEeeiXeb-NSOSFQ" name="RootElement">
+    <packagedElement xmi:type="uml:Package" xmi:id="_EamRAK1KEeeiXeb-NSOSFQ" name="StockProjectUML">
+      <packagedElement xmi:type="uml:Package" xmi:id="_EexmYK1KEeeiXeb-NSOSFQ" name="stockProject">
+        <packagedElement xmi:type="uml:Class" xmi:id="_EexmYa1KEeeiXeb-NSOSFQ" name="Predictor" visibility="public">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_EfOSUK1KEeeiXeb-NSOSFQ" name="cash" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_EfYDUa1KEeeiXeb-NSOSFQ" name="data" visibility="private" type="_EukV4K1KEeeiXeb-NSOSFQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_huawY61KEeeiXeb-NSOSFQ" name="data" type="_EvKy061KEeeiXeb-NSOSFQ" association="_huawYK1KEeeiXeb-NSOSFQ"/>
+          <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_Ee7XYa1KEeeiXeb-NSOSFQ" name="Predictor implements PredictorADT" client="_EexmYa1KEeeiXeb-NSOSFQ" supplier="_Ee7XYK1KEeeiXeb-NSOSFQ" contract="_Ee7XYK1KEeeiXeb-NSOSFQ"/>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_EkSYgK1KEeeiXeb-NSOSFQ" name="Predictor" specification="_EfhNQK1KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    setPortfolioAmount(10000.00);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_EkSYg61KEeeiXeb-NSOSFQ" name="setPortfolioAmount" specification="_EkSYga1KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EuuG4K1KEeeiXeb-NSOSFQ" name="amount">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Eu334K1KEeeiXeb-NSOSFQ" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Eu334a1KEeeiXeb-NSOSFQ" value="1"/>
+            </ownedParameter>
+            <language>JAVA</language>
+            <body>&#xD;
+    cash = amount;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_EkcJgq1KEeeiXeb-NSOSFQ" name="getPortfolioAmount" specification="_EkcJgK1KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Eu334q1KEeeiXeb-NSOSFQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Eu33461KEeeiXeb-NSOSFQ" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Eu335K1KEeeiXeb-NSOSFQ" value="1"/>
+            </ownedParameter>
+            <language>JAVA</language>
+            <body>&#xD;
+    return cash;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_EkcJha1KEeeiXeb-NSOSFQ" name="setDataSet" specification="_EkcJg61KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Eu335a1KEeeiXeb-NSOSFQ" name="dataSet" type="_EukV4K1KEeeiXeb-NSOSFQ">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Eu335q1KEeeiXeb-NSOSFQ" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Eu33561KEeeiXeb-NSOSFQ" value="1"/>
+            </ownedParameter>
+            <language>JAVA</language>
+            <body>&#xD;
+    data = dataSet;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_EklTcK1KEeeiXeb-NSOSFQ" name="predict" specification="_EkcJhq1KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>//Very *VERY* simple predictor, just looks for positive trends from the past week&#xD;
+&#xD;
+    //It is still fairly consistent at providing positive return&#xD;
+    //At least on this data set&#xD;
+    Week current;&#xD;
+    Week previous;&#xD;
+    int stockNum = 0;&#xD;
+    for (int i = 0; i &lt; (data.getStockCount() - 1); i++) {&#xD;
+        for (int j = 1; j &lt; (data.getWeekCount() / data.getStockCount()) - 1; j++) //Dynamic week counting just in case that changes&#xD;
+        {&#xD;
+            previous = data.getStocksWeek(i, j - 1);&#xD;
+            current = data.getStocksWeek(i, j);&#xD;
+            if (previous.getClose() &lt; current.getOpen()) //If there was a price increase since last Friday&#xD;
+            {&#xD;
+                //Since you need to predict on the day you are buying&#xD;
+                if (previous.getOpen() > previous.getClose()) //There might be a decline soon if the price has been constantly going up&#xD;
+                {&#xD;
+                    //So don't invest as much, 60%&#xD;
+                    stockNum = (int) ((cash * 0.6) / current.getOpen());&#xD;
+                    cash -= (stockNum * current.getOpen());&#xD;
+                } else //The rising price developed recently, meaning now is a relative low point in price&#xD;
+                {&#xD;
+                    //So invest a crapton, 90% of current cash&#xD;
+                    stockNum = (int) ((cash * 0.9) / current.getOpen());&#xD;
+                    cash -= (stockNum * current.getOpen());&#xD;
+                }&#xD;
+                //This is effectively Friday, the end of the week.&#xD;
+                //Calculate what your stock currently is worth, sell it, add it to cash&#xD;
+                cash += (stockNum * current.getClose());&#xD;
+                stockNum = 0;&#xD;
+            }&#xD;
+        }&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EfhNQK1KEeeiXeb-NSOSFQ" name="Predictor" visibility="public" method="_EkSYgK1KEeeiXeb-NSOSFQ"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EkSYga1KEeeiXeb-NSOSFQ" name="setPortfolioAmount" visibility="public" method="_EkSYg61KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EkSYgq1KEeeiXeb-NSOSFQ" name="amount">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EkcJgK1KEeeiXeb-NSOSFQ" name="getPortfolioAmount" visibility="public" method="_EkcJgq1KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EkcJga1KEeeiXeb-NSOSFQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EkcJg61KEeeiXeb-NSOSFQ" name="setDataSet" visibility="public" method="_EkcJha1KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EkcJhK1KEeeiXeb-NSOSFQ" name="dataSet" type="_EukV4K1KEeeiXeb-NSOSFQ"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EkcJhq1KEeeiXeb-NSOSFQ" name="predict" visibility="public" method="_EklTcK1KEeeiXeb-NSOSFQ"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EkvEcK1KEeeiXeb-NSOSFQ" name="setPortfolioAmount"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_ElVhY61KEeeiXeb-NSOSFQ" name="setPortfolioAmount">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_ElVhZK1KEeeiXeb-NSOSFQ">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ElVhZa1KEeeiXeb-NSOSFQ" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ElVhZq1KEeeiXeb-NSOSFQ" value="1"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_ElocUq1KEeeiXeb-NSOSFQ" name="setPortfolioAmount">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_ElocU61KEeeiXeb-NSOSFQ" name="amount">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ElocVK1KEeeiXeb-NSOSFQ" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ElxmQK1KEeeiXeb-NSOSFQ" value="1"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EmOSNK1KEeeiXeb-NSOSFQ" name="getPortfolioAmount"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Em0vI61KEeeiXeb-NSOSFQ" name="getPortfolioAmount">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Em95EK1KEeeiXeb-NSOSFQ">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Em95Ea1KEeeiXeb-NSOSFQ" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Em95Eq1KEeeiXeb-NSOSFQ" value="1"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EnuHAK1KEeeiXeb-NSOSFQ" name="setDataSet"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EoT84K1KEeeiXeb-NSOSFQ" name="setDataSet">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EoT84a1KEeeiXeb-NSOSFQ">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EoT84q1KEeeiXeb-NSOSFQ" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EoT8461KEeeiXeb-NSOSFQ" value="1"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Eom30K1KEeeiXeb-NSOSFQ" name="setDataSet">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Eom30a1KEeeiXeb-NSOSFQ" name="dataSet">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Eom30q1KEeeiXeb-NSOSFQ" value="1"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Eom3061KEeeiXeb-NSOSFQ" value="1"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_Ee7XYK1KEeeiXeb-NSOSFQ" name="PredictorADT" visibility="public">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EklTca1KEeeiXeb-NSOSFQ" name="setPortfolioAmount" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_ElVhYq1KEeeiXeb-NSOSFQ" name="amount">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EmOSM61KEeeiXeb-NSOSFQ" name="getPortfolioAmount" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Em0vIq1KEeeiXeb-NSOSFQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EnkWCK1KEeeiXeb-NSOSFQ" name="setDataSet" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EoKL5a1KEeeiXeb-NSOSFQ" name="dataSet" type="_EukV4K1KEeeiXeb-NSOSFQ"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EpDjwK1KEeeiXeb-NSOSFQ" name="predict" visibility="public"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_EukV4K1KEeeiXeb-NSOSFQ" name="StockDataADT" visibility="public">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Eu336K1KEeeiXeb-NSOSFQ" name="getStockCount" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Eu336a1KEeeiXeb-NSOSFQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Eu336q1KEeeiXeb-NSOSFQ" name="getWeekCount" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Eu33661KEeeiXeb-NSOSFQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Eu337K1KEeeiXeb-NSOSFQ" name="getStocksWeek" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Eu337q1KEeeiXeb-NSOSFQ" type="_Eu337a1KEeeiXeb-NSOSFQ" direction="return"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Eu33761KEeeiXeb-NSOSFQ" name="stock">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EvBB0K1KEeeiXeb-NSOSFQ" name="week">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EvBB0a1KEeeiXeb-NSOSFQ" name="getStockName" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EvBB161KEeeiXeb-NSOSFQ" type="_EvBB1a1KEeeiXeb-NSOSFQ" direction="return"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EvBB2K1KEeeiXeb-NSOSFQ" name="stock">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EvKy0K1KEeeiXeb-NSOSFQ" name="getWeekDate" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EvKy0a1KEeeiXeb-NSOSFQ" type="_EvBB1a1KEeeiXeb-NSOSFQ" direction="return"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EvKy0q1KEeeiXeb-NSOSFQ" name="week">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Eu337a1KEeeiXeb-NSOSFQ" name="Week" visibility="public">
+          <generalization xmi:type="uml:Generalization" xmi:id="_galxAK1KEeeiXeb-NSOSFQ" general="_EwXFoK1KEeeiXeb-NSOSFQ"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_Ev6ZsK1KEeeiXeb-NSOSFQ" name="date" visibility="private" type="_EvBB1a1KEeeiXeb-NSOSFQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_Ev6Zsa1KEeeiXeb-NSOSFQ" name="open" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_Ev6Zsq1KEeeiXeb-NSOSFQ" name="close" visibility="private" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_EwEKs61KEeeiXeb-NSOSFQ" name="Week" specification="_Ev6Zs61KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    date = inDate;&#xD;
+    open = Double.parseDouble(inOpen.substring(1));&#xD;
+    //Parses the open price without the $&#xD;
+    close = Double.parseDouble(inClose.substring(1));&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_EwEKtq1KEeeiXeb-NSOSFQ" name="toString" specification="_EwEKtK1KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    String toReturn;&#xD;
+    toReturn = &quot;Date: &quot; + date + &quot; Open price: $&quot; + open + &quot; Close price: $&quot; + close;&#xD;
+    return toReturn;&#xD;
+//Since we return a Week object in the interface, might as well make a toString&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_EwNUoa1KEeeiXeb-NSOSFQ" name="getDate" specification="_EwEKt61KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return date;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_EwNUpK1KEeeiXeb-NSOSFQ" name="getOpen" specification="_EwNUoq1KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return open;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_EwNUp61KEeeiXeb-NSOSFQ" name="getClose" specification="_EwNUpa1KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return close;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Ev6Zs61KEeeiXeb-NSOSFQ" name="Week" visibility="public" method="_EwEKs61KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EwEKsK1KEeeiXeb-NSOSFQ" name="inDate" type="_EvBB1a1KEeeiXeb-NSOSFQ"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EwEKsa1KEeeiXeb-NSOSFQ" name="inOpen" type="_EvBB1a1KEeeiXeb-NSOSFQ"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EwEKsq1KEeeiXeb-NSOSFQ" name="inClose" type="_EvBB1a1KEeeiXeb-NSOSFQ"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EwEKtK1KEeeiXeb-NSOSFQ" name="toString" visibility="public" method="_EwEKtq1KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EwEKta1KEeeiXeb-NSOSFQ" type="_EvBB1a1KEeeiXeb-NSOSFQ" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EwEKt61KEeeiXeb-NSOSFQ" name="getDate" visibility="public" method="_EwNUoa1KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EwNUoK1KEeeiXeb-NSOSFQ" type="_EvBB1a1KEeeiXeb-NSOSFQ" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EwNUoq1KEeeiXeb-NSOSFQ" name="getOpen" visibility="public" method="_EwNUpK1KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EwNUo61KEeeiXeb-NSOSFQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EwNUpa1KEeeiXeb-NSOSFQ" name="getClose" visibility="public" method="_EwNUp61KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EwNUpq1KEeeiXeb-NSOSFQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_6j0jABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_EvKy061KEeeiXeb-NSOSFQ" name="Data" visibility="public">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_EvUj0q1KEeeiXeb-NSOSFQ" name="Stocks" visibility="private" type="_EvUj0K1KEeeiXeb-NSOSFQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_EvUj061KEeeiXeb-NSOSFQ" name="fileName" visibility="private" type="_EvBB1a1KEeeiXeb-NSOSFQ" isUnique="false"/>
+          <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_EvKy1K1KEeeiXeb-NSOSFQ" name="Data implements StockDataADT" client="_EvKy061KEeeiXeb-NSOSFQ" supplier="_EukV4K1KEeeiXeb-NSOSFQ" contract="_EukV4K1KEeeiXeb-NSOSFQ"/>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Evdtwa1KEeeiXeb-NSOSFQ" name="Data" specification="_EvUj1K1KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    fileName = fn;&#xD;
+    initialize();&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_EvdtxK1KEeeiXeb-NSOSFQ" name="getStockCount" specification="_Evdtwq1KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return Stocks.size();&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Evdtx61KEeeiXeb-NSOSFQ" name="getWeekCount" specification="_Evdtxa1KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    int sum = 0;&#xD;
+    for (Stock temp : Stocks) //Adds up all the number of weeks of each stock, just in case they aren't all equal&#xD;
+    {&#xD;
+        sum += temp.numOfWeeks();&#xD;
+    }&#xD;
+    return sum;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_EvdtzK1KEeeiXeb-NSOSFQ" name="getStocksWeek" specification="_EvdtyK1KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return Stocks.get(stock).getWeek(week);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Evnew61KEeeiXeb-NSOSFQ" name="getStockName" specification="_EvnewK1KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return Stocks.get(stock).getName();&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Evnex61KEeeiXeb-NSOSFQ" name="getWeekDate" specification="_EvnexK1KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return Stocks.get(0).getWeek(week).getDate();&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Evwosa1KEeeiXeb-NSOSFQ" name="initialize" specification="_EvwosK1KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    //Array started with 0 entries so &quot;add&quot; makes sense&#xD;
+    Stocks = new ArrayList&lt;Stock>(0);&#xD;
+    String aline;&#xD;
+    String[] tokens;&#xD;
+    File file = new File(fileName);&#xD;
+    Scanner scan;&#xD;
+    //Try/Catch for file name given in tester&#xD;
+    try {&#xD;
+        scan = new Scanner(file);&#xD;
+        while (scan.hasNextLine()) {&#xD;
+            aline = scan.nextLine();&#xD;
+            if (aline.substring(0, 1).equals(&quot;q&quot;)) //If the description of columns is on the first line, skip it&#xD;
+            {&#xD;
+                aline = scan.nextLine();&#xD;
+            }&#xD;
+            tokens = aline.split(&quot;,&quot;);&#xD;
+            if (aline.contains(&quot;,,,&quot;)) {&#xD;
+                Stocks.add(new Stock(tokens));&#xD;
+            //Constructor for Stock stores the name and data for first week&#xD;
+            //So passing the entire line is necessary&#xD;
+            } else {&#xD;
+                Stocks.get(Stocks.size() - 1).addWeek(tokens[2], tokens[3], tokens[6]);&#xD;
+            //Since the stock already has a name, only the data for week is necessary&#xD;
+            //Tokens[2] contains the date&#xD;
+            //Tokens[3] contains the opening price&#xD;
+            //Tokens[6] contains the closing price&#xD;
+            }&#xD;
+        }&#xD;
+    } catch (FileNotFoundException e) {&#xD;
+        System.out.println(&quot;File not found.&quot;);&#xD;
+        e.printStackTrace();&#xD;
+        System.exit(1);&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EvUj1K1KEeeiXeb-NSOSFQ" name="Data" visibility="public" method="_Evdtwa1KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EvdtwK1KEeeiXeb-NSOSFQ" name="fn" type="_EvBB1a1KEeeiXeb-NSOSFQ"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Evdtwq1KEeeiXeb-NSOSFQ" name="getStockCount" visibility="public" method="_EvdtxK1KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Evdtw61KEeeiXeb-NSOSFQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Evdtxa1KEeeiXeb-NSOSFQ" name="getWeekCount" visibility="public" method="_Evdtx61KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Evdtxq1KEeeiXeb-NSOSFQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EvdtyK1KEeeiXeb-NSOSFQ" name="getStocksWeek" visibility="public" method="_EvdtzK1KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Evdtya1KEeeiXeb-NSOSFQ" type="_Eu337a1KEeeiXeb-NSOSFQ" direction="return"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Evdtyq1KEeeiXeb-NSOSFQ" name="stock">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Evdty61KEeeiXeb-NSOSFQ" name="week">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EvnewK1KEeeiXeb-NSOSFQ" name="getStockName" visibility="public" method="_Evnew61KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Evnewa1KEeeiXeb-NSOSFQ" type="_EvBB1a1KEeeiXeb-NSOSFQ" direction="return"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Evnewq1KEeeiXeb-NSOSFQ" name="stock">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EvnexK1KEeeiXeb-NSOSFQ" name="getWeekDate" visibility="public" method="_Evnex61KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Evnexa1KEeeiXeb-NSOSFQ" type="_EvBB1a1KEeeiXeb-NSOSFQ" direction="return"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Evnexq1KEeeiXeb-NSOSFQ" name="week">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EvwosK1KEeeiXeb-NSOSFQ" name="initialize" visibility="private" method="_Evwosa1KEeeiXeb-NSOSFQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_EvUj0K1KEeeiXeb-NSOSFQ" name="ArrayList"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Evwosq1KEeeiXeb-NSOSFQ" name="StockProjectTester" visibility="public">
+          <generalization xmi:type="uml:Generalization" xmi:id="_g0-m8K1KEeeiXeb-NSOSFQ" general="_EvKy061KEeeiXeb-NSOSFQ"/>
+          <generalization xmi:type="uml:Generalization" xmi:id="_ivzU4K1KEeeiXeb-NSOSFQ" general="_EexmYa1KEeeiXeb-NSOSFQ"/>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Evwot61KEeeiXeb-NSOSFQ" name="main" specification="_Evwos61KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    StockDataADT myData = new Data(&quot;dow_jones_index1_3.data&quot;);&#xD;
+    System.out.println(&quot;Number of stocks in file: &quot; + myData.getStockCount());&#xD;
+    System.out.println(&quot;Number of weeks in file: &quot; + myData.getWeekCount());&#xD;
+    System.out.println(myData.getStocksWeek(0, 0));&#xD;
+    System.out.println(myData.getStockName(29));&#xD;
+    System.out.println(myData.getWeekDate(3));&#xD;
+    PredictorADT myPred = new Predictor();&#xD;
+    myPred.setDataSet(myData);&#xD;
+    myPred.predict();&#xD;
+    System.out.println(myPred.getPortfolioAmount());&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Evwos61KEeeiXeb-NSOSFQ" name="main" visibility="public" isStatic="true" method="_Evwot61KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EvwotK1KEeeiXeb-NSOSFQ" name="args" type="_EvBB1a1KEeeiXeb-NSOSFQ">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Evwota1KEeeiXeb-NSOSFQ"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Evwotq1KEeeiXeb-NSOSFQ" value="*"/>
+            </ownedParameter>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_EwXFoK1KEeeiXeb-NSOSFQ" name="Stock" visibility="public">
+          <generalization xmi:type="uml:Generalization" xmi:id="_f1Bl0K1KEeeiXeb-NSOSFQ" general="_EvKy061KEeeiXeb-NSOSFQ"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_EwXFoa1KEeeiXeb-NSOSFQ" name="name" visibility="private" type="_EvBB1a1KEeeiXeb-NSOSFQ" isUnique="false"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_EwXFoq1KEeeiXeb-NSOSFQ" name="Weeks" visibility="private" type="_EvUj0K1KEeeiXeb-NSOSFQ" isUnique="false"/>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Ewg2o61KEeeiXeb-NSOSFQ" name="Stock" specification="_EwXFo61KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>//Constructor which applies the name to the new stock&#xD;
+&#xD;
+    //Then populates the first week using the line of tokens provided&#xD;
+    name = tokens[1];&#xD;
+    Weeks = new ArrayList&lt;Week>(0);&#xD;
+    addWeek(tokens[2], tokens[3], tokens[6]);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Ewg2qK1KEeeiXeb-NSOSFQ" name="addWeek" specification="_Ewg2pK1KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    Weeks.add(new Week(date, open, close));&#xD;
+//Passes the appropriate data for the week into the Week constructor&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Ewg2q61KEeeiXeb-NSOSFQ" name="numOfWeeks" specification="_Ewg2qa1KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return Weeks.size();&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Ewg2r61KEeeiXeb-NSOSFQ" name="getWeek" specification="_Ewg2rK1KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return Weeks.get(week);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_EwqAkq1KEeeiXeb-NSOSFQ" name="getName" specification="_EwqAkK1KEeeiXeb-NSOSFQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    return name;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EwXFo61KEeeiXeb-NSOSFQ" name="Stock" visibility="public" method="_Ewg2o61KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ewg2oK1KEeeiXeb-NSOSFQ" name="tokens" type="_EvBB1a1KEeeiXeb-NSOSFQ">
+              <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Ewg2oa1KEeeiXeb-NSOSFQ"/>
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Ewg2oq1KEeeiXeb-NSOSFQ" value="*"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Ewg2pK1KEeeiXeb-NSOSFQ" name="addWeek" visibility="public" method="_Ewg2qK1KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ewg2pa1KEeeiXeb-NSOSFQ" name="date" type="_EvBB1a1KEeeiXeb-NSOSFQ"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ewg2pq1KEeeiXeb-NSOSFQ" name="open" type="_EvBB1a1KEeeiXeb-NSOSFQ"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ewg2p61KEeeiXeb-NSOSFQ" name="close" type="_EvBB1a1KEeeiXeb-NSOSFQ"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Ewg2qa1KEeeiXeb-NSOSFQ" name="numOfWeeks" visibility="public" method="_Ewg2q61KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ewg2qq1KEeeiXeb-NSOSFQ" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Ewg2rK1KEeeiXeb-NSOSFQ" name="getWeek" visibility="public" method="_Ewg2r61KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ewg2ra1KEeeiXeb-NSOSFQ" type="_Eu337a1KEeeiXeb-NSOSFQ" direction="return"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Ewg2rq1KEeeiXeb-NSOSFQ" name="week">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_EwqAkK1KEeeiXeb-NSOSFQ" name="getName" visibility="public" method="_EwqAkq1KEeeiXeb-NSOSFQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_EwqAka1KEeeiXeb-NSOSFQ" type="_EvBB1a1KEeeiXeb-NSOSFQ" direction="return"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_eDZ3MK1KEeeiXeb-NSOSFQ" client="_EvKy061KEeeiXeb-NSOSFQ" supplier="_EukV4K1KEeeiXeb-NSOSFQ"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_huawYK1KEeeiXeb-NSOSFQ" memberEnd="_huawY61KEeeiXeb-NSOSFQ _huawZK1KEeeiXeb-NSOSFQ">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_huawYa1KEeeiXeb-NSOSFQ" source="org.eclipse.papyrus">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_huawYq1KEeeiXeb-NSOSFQ" key="nature" value="UML_Nature"/>
+          </eAnnotations>
+          <ownedEnd xmi:type="uml:Property" xmi:id="_huawZK1KEeeiXeb-NSOSFQ" name="predictor" type="_EexmYa1KEeeiXeb-NSOSFQ" association="_huawYK1KEeeiXeb-NSOSFQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_iIZWoK1KEeeiXeb-NSOSFQ" client="_EexmYa1KEeeiXeb-NSOSFQ" supplier="_Ee7XYK1KEeeiXeb-NSOSFQ"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_EvBB0q1KEeeiXeb-NSOSFQ" name="java">
+      <packagedElement xmi:type="uml:Package" xmi:id="_EvBB061KEeeiXeb-NSOSFQ" name="java">
+        <packagedElement xmi:type="uml:Package" xmi:id="_EvBB1K1KEeeiXeb-NSOSFQ" name="lang">
+          <packagedElement xmi:type="uml:Class" xmi:id="_EvBB1a1KEeeiXeb-NSOSFQ" name="String"/>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_EdSYoK1KEeeiXeb-NSOSFQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_EdSYoa1KEeeiXeb-NSOSFQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://PapyrusJava_PROFILES/PapyrusJava.profile.uml#_j9REUByGEduN1bTiWJ0lyw"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_EdvEkK1KEeeiXeb-NSOSFQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Ed4OgK1KEeeiXeb-NSOSFQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/Codegen/1#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://Codegen_PROFILES/Codegen.profile.uml#_fPDsIBa-EearhdjjJ6cVzQ"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_EeLJcK1KEeeiXeb-NSOSFQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_EeLJca1KEeeiXeb-NSOSFQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Model>
+  <standard:Create xmi:id="_EkJOkK1KEeeiXeb-NSOSFQ" base_BehavioralFeature="_EfhNQK1KEeeiXeb-NSOSFQ"/>
+  <PapyrusJava:External xmi:id="_EvBB1q1KEeeiXeb-NSOSFQ" name="java.lang.String" base_Classifier="_EvBB1a1KEeeiXeb-NSOSFQ"/>
+  <PapyrusJava:External xmi:id="_EvUj0a1KEeeiXeb-NSOSFQ" name="ArrayList" base_Classifier="_EvUj0K1KEeeiXeb-NSOSFQ"/>
+  <standard:Create xmi:id="_EvUj1a1KEeeiXeb-NSOSFQ" base_BehavioralFeature="_EvUj1K1KEeeiXeb-NSOSFQ"/>
+  <standard:Create xmi:id="_Ev6ZtK1KEeeiXeb-NSOSFQ" base_BehavioralFeature="_Ev6Zs61KEeeiXeb-NSOSFQ"/>
+  <standard:Create xmi:id="_EwXFpK1KEeeiXeb-NSOSFQ" base_BehavioralFeature="_EwXFo61KEeeiXeb-NSOSFQ"/>
+</xmi:XMI>
